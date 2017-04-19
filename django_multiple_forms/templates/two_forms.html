@@ -1,5 +1,10 @@
 {% extends 'outer.html' %}
 
 {% block body %}
-Body
+  <form method="post">
+    {% csrf_token %}
+    {{ contact_form }}
+    {{ subscription_form }}
+    <button>Submit</button>
+  </form>
 {% endblock %}
