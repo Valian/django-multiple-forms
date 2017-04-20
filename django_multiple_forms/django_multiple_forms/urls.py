@@ -21,6 +21,5 @@ from django_multiple_forms import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'two-forms-both-must-pass', views.TwoFormsBothMustPassView.as_view(), name='two_both'),
-    url(r'', views.IndexView.as_view(), name='index')
+    url(r'', views.MultipleFormsDemoView.as_view(), name='forms'),
 ]

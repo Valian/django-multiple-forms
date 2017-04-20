@@ -1,0 +1,20 @@
+<html>
+  <head></head>
+  <body>
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% for form in forms %}
+    <form method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input type="hidden" name="selected_form" value="{{ forloop.counter0 }}">
+      <button type="submit">Submit</button>
+    </form>
+  {% endfor %}
+  </body>
+</html>
