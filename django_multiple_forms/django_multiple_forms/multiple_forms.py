@@ -100,6 +100,8 @@ class MultipleFormsMixin(ContextMixin):
         """
         If the form is valid, redirect to the supplied URL.
         """
+        if hasattr(form, "on_valid"):
+            form.on_valid()
         return HttpResponseRedirect(self.get_success_url())
 
     def form_invalid(self, form):
@@ -107,6 +109,8 @@ class MultipleFormsMixin(ContextMixin):
         If the form is invalid, re-render the context data with the
         data-filled forms and errors.
         """
+        if hasattr(form, "on_invalid"):
+            form.on_invalid()
         return self.render_to_response(self.get_context_data(active_form=form))
 
     def get_context_data(self, **kwargs):
